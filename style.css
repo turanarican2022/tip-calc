@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+:root {
+  /*Primary*/
+
+  --strong-cyan: hsl(172, 67%, 45%);
+
+  /*Neutral*/
+
+  --very-dark-cyan: hsl(183, 100%, 15%);
+  --dark-grayish-cyan: hsl(186, 14%, 43%);
+  --grayish-cyan: hsl(184, 14%, 56%);
+  --light-grayish-cyan: hsl(185, 41%, 84%);
+  --very-light-grayish-cyan: hsl(189, 41%, 97%);
+  --white: hsl(0, 0%, 100%);
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  background-color: var(--light-grayish-cyan);
+}
+
+.body-container {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+main {
+  padding: 32px;
+  background-color: var(--white);
+  border-radius: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: flex-start;
+  gap: 32px;
+}
+
+label[id="label-amount"],
+label[id="label-people"] {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--dark-grayish-cyan);
+}
+
+.title-and-msg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--dark-grayish-cyan);
+}
+
+.error-msg {
+  color: rgb(228, 4, 79);
+  display: none;
+}
+
+:root:has(#amount:invalid) .error-msg.amount-err,
+:root:has(#people:invalid) .error-msg.people-err {
+  display: block;
+}
+
+.input-wrapper {
+  background-color: var(--very-light-grayish-cyan);
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#dollar::after {
+  content: url("images/icon-dollar.svg");
+}
+
+input[type="number"] {
+  width: auto;
+  background-color: var(--very-light-grayish-cyan);
+  color: var(--very-dark-cyan);
+  font-size: 24px;
+  font-family: inherit;
+  text-align: right;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+.input-wrapper:has([type="number"]:focus) {
+  box-shadow: inset 0 0 3px var(--strong-cyan);
+}
+
+.input-wrapper:has(input[type="number"]:invalid) {
+  box-shadow: inset 0 0 3px rgb(228, 4, 79);
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+.percent-area-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 140px);
+  grid-template-rows: auto 1fr 1fr;
+  justify-items: center;
+  gap: 12px;
+}
+
+legend {
+  grid-row: 1;
+  grid-column: 1/-1;
+  justify-self: start;
+  color: var(--dark-grayish-cyan);
+}
+
+.percent-wrapper {
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+  justify-self: stretch;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 26px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.percent-wrapper:has([type="radio"]:checked) {
+  background-color: var(--strong-cyan);
+  color: var(--very-dark-cyan);
+}
+
+#people::after {
+  content: url("images/icon-person.svg");
+}
+
+#custom {
+  display: none;
+}
+
+#custom:has(+ #percent-custom:checked) {
+  display: block;
+  width: 100%;
+}
+
+:root:has(#percent-custom:checked) #people-title {
+  display: none;
+}
+
+:root:has(#percent-custom:checked) #percent-custom-wrapper {
+  box-shadow: inset 0 0 3px var(--strong-cyan);
+  background-color: var(--very-light-grayish-cyan);
+}
+
+:root:has(#custom:invalid) #percent-custom-wrapper {
+  box-shadow: inset 0 0 3px rgb(228, 4, 79);
+}
