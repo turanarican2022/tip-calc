@@ -15,6 +15,14 @@
   --white: hsl(0, 0%, 100%);
 }
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Space Mono", monospace;
   background-color: var(--light-grayish-cyan);
@@ -26,13 +34,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 64px;
 }
 
 main {
   padding: 32px;
   background-color: var(--white);
   border-radius: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
 }
 
 form {
@@ -41,14 +52,6 @@ form {
   justify-content: flex-start;
   align-content: flex-start;
   gap: 32px;
-}
-
-label[id="label-amount"],
-label[id="label-people"] {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  color: var(--dark-grayish-cyan);
 }
 
 .title-and-msg {
@@ -63,8 +66,8 @@ label[id="label-people"] {
   display: none;
 }
 
-:root:has(#amount:invalid) .error-msg.amount-err,
-:root:has(#people:invalid) .error-msg.people-err {
+:root:has(#amount:invalid) .amount-err,
+:root:has(#people:invalid) .people-err {
   display: block;
 }
 
@@ -77,11 +80,12 @@ label[id="label-people"] {
   align-items: center;
 }
 
-#dollar::after {
+#icon-dollar::after {
   content: url("images/icon-dollar.svg");
 }
 
 input[type="number"] {
+  justify-self: stretch;
   width: auto;
   background-color: var(--very-light-grayish-cyan);
   color: var(--very-dark-cyan);
@@ -98,7 +102,7 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
 }
 
-.input-wrapper:has([type="number"]:focus) {
+.input-wrapper:has(input[type="number"]:focus) {
   box-shadow: inset 0 0 3px var(--strong-cyan);
 }
 
@@ -141,12 +145,12 @@ input[type="radio"] {
   display: none;
 }
 
-.percent-wrapper:has([type="radio"]:checked) {
+.percent-wrapper:has(input[type="radio"]:checked) {
   background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
 }
 
-#people::after {
+#icon-people::after {
   content: url("images/icon-person.svg");
 }
 
@@ -159,7 +163,7 @@ input[type="radio"] {
   width: 100%;
 }
 
-:root:has(#percent-custom:checked) #people-title {
+:root:has(#percent-custom:checked) #custom-title {
   display: none;
 }
 
@@ -170,4 +174,60 @@ input[type="radio"] {
 
 :root:has(#custom:invalid) #percent-custom-wrapper {
   box-shadow: inset 0 0 3px rgb(228, 4, 79);
+}
+
+.output {
+  background-color: var(--very-dark-cyan);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.computed-amount-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  padding: 0 32px;
+}
+
+.label-tip-amount {
+  color: var(--white);
+  font-size: 18px;
+  align-self: end;
+}
+
+.per-person {
+  color: var(--grayish-cyan);
+  font-size: 16px;
+  align-self: start;
+}
+
+.computed-amount {
+  grid-column: 2;
+  grid-row: 1 / span2;
+  justify-self: end;
+  color: var(--strong-cyan);
+  font-size: 48px;
+}
+
+.reset {
+  margin: 32px;
+  background-color: var(--strong-cyan);
+  color: var(--very-dark-cyan);
+  border: none;
+  border-radius: 12px;
+  font-size: 24px;
+  text-transform: uppercase;
+  padding: 12px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  cursor: pointer;
 }
