@@ -30,6 +30,7 @@ body {
 
 .body-container {
   min-height: 100svh;
+  margin: 48px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -249,7 +250,6 @@ input[type="radio"] {
 @media (max-width: 700px) {
   .body-container {
     width: 90%;
-    margin: 0 auto;
   }
   .percent-area-wrapper {
     grid-template-columns: repeat(2, 1fr);
