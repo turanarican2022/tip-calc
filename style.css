@@ -29,7 +29,7 @@ body {
 }
 
 .body-container {
-  height: 100svh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +49,6 @@ main {
 form {
   display: flex;
   flex-direction: column;
-
   gap: 32px;
 }
 
@@ -116,7 +115,7 @@ fieldset {
 
 .percent-area-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 140px);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto 1fr 1fr;
   justify-items: center;
   justify-content: center;
@@ -187,6 +186,7 @@ input[type="radio"] {
 .results {
   display: flex;
   flex-direction: column;
+  gap: 36px;
   margin-top: 32px;
 }
 
@@ -243,5 +243,32 @@ input[type="radio"] {
 @media (max-width: 1000px) {
   main {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .body-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .percent-area-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr 1fr 1fr;
+  }
+  .computed-amount-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+  }
+  .label-amount {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .per-person {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .computed-amount {
+    grid-row: 3;
+    grid-column: 1;
   }
 }
