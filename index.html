@@ -15,33 +15,25 @@
     <title>Frontend Mentor | Tip calculator app</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <div class="body-container">
       <img src="/images/logo.svg" alt="app logo" class="logo" />
       <main>
-        <div class="input">
-          <form action="#" class="input-form">
-            <label for="amount"
+        <div class="input-area">
+          <form action="#" class="input-form" id="input-form">
+            <label for="bill-amount"
               ><div class="title-and-msg">
                 <span>Bill</span
-                ><span class="error-msg amount-err">Can't be zero</span>
+                ><span class="error-msg bill-amount-err">Can't be zero</span>
               </div>
               <div class="input-wrapper">
                 <span id="icon-dollar"></span>
                 <input
                   type="number"
-                  id="amount"
-                  name="amount"
+                  id="bill-amount"
+                  name="bill-amount"
                   min="1"
                   step="0.001"
                 /></div
@@ -51,7 +43,12 @@
                 <legend>Select Tip %</legend>
 
                 <label class="percent-wrapper" for="percent-5"
-                  >5%<input type="radio" name="tip" id="percent-5" value="5"
+                  >5%<input
+                    type="radio"
+                    name="tip"
+                    id="percent-5"
+                    value="5"
+                    checked
                 /></label>
 
                 <label class="percent-wrapper" for="percent-10"
@@ -70,12 +67,12 @@
                   class="percent-wrapper"
                   for="percent-custom"
                   id="percent-custom-wrapper"
-                  ><span id="custom-title">Custom</span>
+                  ><span id="percent-custom-text">Custom</span>
                   <input
                     type="number"
                     name="custom"
                     id="custom"
-                    min="1"
+                    min="0"
                     max="100"
                     value="0" />
                   <input type="radio" name="tip" id="percent-custom" value="0"
@@ -99,29 +96,34 @@
             ></label>
           </form>
         </div>
-        <div class="output">
+        <div class="output-area">
           <div class="results">
             <div class="computed-amount-wrapper">
-              <div class="label-tip-amount">Tip Amount</div>
+              <div class="label-amount">Tip Amount</div>
               <div class="per-person">/ person</div>
-              <div class="computed-amount">$4.27</div>
+              <div class="computed-amount">
+                $<span id="computed-tip-amount">0.00</span>
+              </div>
             </div>
             <div class="computed-amount-wrapper">
-              <div class="label-tip-amount">Total Amount</div>
+              <div class="label-amount">Total Amount</div>
               <div class="per-person">/ person</div>
-              <div class="computed-amount">$32.79</div>
+              <div class="computed-amount">
+                $<span id="computed-total-amount">0.00</span>
+              </div>
             </div>
           </div>
-          <button class="reset">RESET</button>
+          <button id="reset" class="reset" type="reset" form="input-form">
+            RESET
+          </button>
         </div>
       </main>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Halit Turan ARICAN</a>.
+      </div>
     </div>
-
-    <!-- <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div> -->
   </body>
 </html>
